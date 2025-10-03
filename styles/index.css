@@ -1,0 +1,228 @@
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.toolbar {
+  background: #23272b;
+  padding: 6px 10px 6px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-sizing: border-box;
+  border-bottom: 4px solid #444;
+  flex: 0 0 auto;
+}
+
+.toolbar button {
+  background: #2d3238;
+  color: #eee;
+  border: 2px solid #444;
+  border-radius: 4px;
+  padding: 5px 14px;
+  margin: 0;
+  font-size: 1em;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.15s, border 0.15s;
+  user-select: none;
+}
+
+.toolbar button:hover {
+  background: #3a4047;
+  border-color: #666;
+}
+
+.tool-btn.selected {
+  background: #4a90e2;
+  color: #fff;
+  border-color: #357ab8;
+}
+
+.toolbar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.panel-container {
+  display: grid;
+  position: relative;
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-template-rows: 0.5fr 0.5fr;
+  gap: 4px;
+  background: #444;
+  flex: 1 1 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+
+.panel-container.tool-pan {
+  cursor: grab;
+}
+
+.panel-container.tool-create-vertex {
+  cursor: crosshair;
+}
+
+.panel {
+  position: relative;
+  background: #181818;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+canvas {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #111;
+}
+
+.panel-label {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  color: #ccc;
+  background: rgba(30,30,30,0.7);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.95em;
+  user-select: none;
+  z-index: 1;
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.reset-camera-btn,
+.movement-constraint-btn {
+  margin-left: 8px;
+  padding: 0 6px;
+  font-size: 1em;
+  background: #23272b;
+  color: #aaf;
+  border: 2px solid #357ab8;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+  height: 18px;
+  min-width: 18px;
+  transition: background 0.15s, border 0.15s;
+}
+
+.movement-constraint-btn {
+  margin: 0;
+}
+
+.reset-camera-btn:hover,
+.movement-constraint-btn:hover,
+.movement-constraint-btn.active {
+  background: #4a90e2;
+  color: #fff;
+  border-color: #357ab8;
+}
+
+.help-modal {
+  padding: 24px;
+  min-width: 400px;
+  max-width: 600px;
+  min-height: 400px;
+  border: none;
+  border-radius: 8px;
+  background: #2d3238;
+  color: #eee;
+}
+
+.help-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.help-modal .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.help-modal .close-btn:hover {
+  background: #444;
+  color: #fff;
+}
+
+.help-modal .help-content {
+  margin-right: 20px;
+}
+
+.resize-handle {
+  position: absolute;
+  background: #444;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.resize-handle:hover,
+.resize-handle.active {
+  background-color: #4a90e2;
+}
+
+.resize-handle-vertical {
+  cursor: col-resize;
+  width: 4px;
+  height: 100%;
+  top: 0;
+  left: calc(50% - 2px);
+}
+
+.resize-handle-horizontal {
+  cursor: row-resize;
+  width: 100%;
+  height: 4px;
+  top: calc(50% - 2px);
+  left: 0;
+}
+
+.resize-handle-center {
+  cursor: move;
+  width: 12px;
+  height: 12px;
+  top: calc(50% - 6px);
+  left: calc(50% - 6px);
+  border-radius: 50%;
+}
+
+.dg li.folder .dg.selected > ul > li.title {
+  background-color: #042;
+}
+
+.dg li.cr span.property-name.selected {
+  background-color: #042;
+}

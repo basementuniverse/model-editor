@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wireframe Model Editor</title>
+  <link rel="stylesheet" href="styles/index.css">
+  <script src="build/index.js" defer></script>
+</head>
+<body>
+  <div class="main-layout">
+    <div class="toolbar">
+      <button
+        id="btn-reset"
+        type="button"
+        data-tool="reset"
+        title="Reset editor"
+      >Reset</button>
+      <button
+        id="btn-import"
+        type="button"
+        data-tool="import"
+        title="Import a model"
+      >Import</button>
+      <button
+        id="btn-export"
+        type="button"
+        data-tool="export"
+        title="Export the current model"
+      >Export</button>
+      <button
+        id="btn-select"
+        type="button"
+        class="tool-btn selected"
+        data-tool="select"
+        data-selectable="true"
+        title="Select vertices, edges, and surfaces"
+      >Select</button>
+      <button
+        id="btn-pan"
+        type="button"
+        class="tool-btn"
+        data-tool="pan"
+        data-selectable="true"
+        title="Pan the views"
+      >Pan</button>
+      <button
+        id="btn-create-vertex"
+        type="button"
+        class="tool-btn"
+        data-tool="create-vertex"
+        data-selectable="true"
+        title="Create vertices"
+      >Vertex</button>
+      <button
+        id="btn-create-edge"
+        type="button"
+        class="tool-btn"
+        data-tool="create-edge"
+        data-selectable="true"
+        title="Create edges"
+      >Edge</button>
+      <button
+        id="btn-create-surface"
+        type="button"
+        class="tool-btn"
+        data-tool="create-surface"
+        data-selectable="true"
+        title="Create surfaces"
+      >Surface</button>
+      <button
+        id="btn-undo"
+        type="button"
+        data-tool="undo"
+        title="Undo the last action"
+        disabled
+      >Undo</button>
+      <button
+        id="btn-redo"
+        type="button"
+        data-tool="redo"
+        title="Redo the last undone action"
+        disabled
+      >Redo</button>
+      <button
+        id="btn-help"
+        type="button"
+        title="Show help"
+        class="help-btn"
+      >?</button>
+    </div>
+    <div class="panel-container tool-select">
+      <div class="panel">
+        <canvas id="canvas-top"></canvas>
+        <div class="panel-label">Top (XZ)
+          <button class="reset-camera-btn" data-panel="top" title="Reset camera">⊕</button>
+        </div>
+      </div>
+      <div class="panel">
+        <canvas id="canvas-front"></canvas>
+        <div class="panel-label">Front (XY)
+          <button class="reset-camera-btn" data-panel="front" title="Reset camera">⊕</button>
+        </div>
+      </div>
+      <div class="panel">
+        <canvas id="canvas-side"></canvas>
+        <div class="panel-label">Side (ZY)
+          <button class="reset-camera-btn" data-panel="side" title="Reset camera">⊕</button>
+        </div>
+      </div>
+      <div class="panel">
+        <canvas id="canvas-3d"></canvas>
+        <div class="panel-label">3D
+          <button class="reset-camera-btn" data-panel="3d" title="Reset camera">⊕</button>
+          <button class="movement-constraint-btn movement-constraint-btn-x" data-axis="x" title="Constrain movement to X axis">X</button>
+          <button class="movement-constraint-btn movement-constraint-btn-y" data-axis="y" title="Constrain movement to Y axis">Y</button>
+          <button class="movement-constraint-btn movement-constraint-btn-z" data-axis="z" title="Constrain movement to Z axis">Z</button>
+        </div>
+      </div>
+      <div class="resize-handle resize-handle-vertical" data-mode="vertical"></div>
+      <div class="resize-handle resize-handle-horizontal" data-mode="horizontal"></div>
+      <div class="resize-handle resize-handle-center" data-mode="center"></div>
+    </div>
+  </div>
+  <dialog id="help-modal" class="help-modal">
+    <button class="close-btn" title="Close help">×</button>
+    <div class="help-content">
+      <h1>Keyboard controls</h1>
+      <p>
+        <em>W/A/S/D</em>: move camera in 3d view
+      </p>
+      <p>
+        <em>Q/E</em>: move camera up/down in 3d view
+      </p>
+      <p>
+        <em>X/Y/Z</em>: constrain vertex movement to the respective axis in 3d view (also available as toggle buttons in the 3D panel)
+      </p>
+      <p>
+        <em>Ctrl</em>: select multiple vertices, edges, or surfaces
+      </p>
+      <p>
+        <em>Shift</em>: snap to grid when moving vertices
+      </p>
+      <p>
+        <em>Space</em>: temporarily switch to pan tool
+      </p>
+    </div>
+  </dialog>
+</body>
+</html>
