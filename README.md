@@ -2,4 +2,4 @@
 
 A simple 3D model editor, mostly vibe-coded for fun. Creates wireframe models with shaded surfaces. Intended for designing low-poly models for one of my side-projects.
 
-Try it out: https://model-editor.basementuniverse.com/
+Try it out: http://model-editor.basementuniverse.com/
